@@ -1,6 +1,6 @@
 ### columns-accsss
  - 数据库字段级权限设计
-### Demo简介
+### 简介
   - 权限设计
   - Spring+Mybatis
   - JAVA

@@ -26,7 +26,7 @@ public class MyMethodInterceptor implements MethodInterceptor {
         // 目标方法的参数
         Object[] args = invocation.getArguments();
         for (int i=0; i<args.length; i++) {
-            // 只修改权限调价的类型数据
+            // 只修改权限条件类型的参数
             if(args[i] instanceof SysAccessCriteria){
                 SysAccessCriteria sysAccessCriteria = (SysAccessCriteria) args[i];
                 result = sysAccess.getUserAceess(sysAccessCriteria);
