@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysl.access.dao.SysRoleTableMapper">
+	<resultMap id="BaseResult" type="com.ysl.access.to.SysRoleTable">
+		<id column="role_id" property="roleId"/>
+		<result column="tb_name" property="tbName"/>
+		<result column="tb_column_include" property="tbColumnInclue"/>
+	</resultMap>
+
+	<!--根据角色id和表名查询角色拥有的权限字段-->
+	<select id="getRoleTableByRoleIdAndTbName" resultMap="BaseResult">
+		SELECT
+				role_id,
+				tb_name,
+				tb_column_include
+	 	FROM 	sys_role_table
+	  	WHERE	role_id IN
+	  			<foreach collection="roleIds" item="roleId" separator="," open="(" close=")">
+				#{roleId}
+				</foreach>
+	  			AND tb_name = #{tbName, jdbcType=VARCHAR}
+	</select>
+
+</mapper>

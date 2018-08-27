@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysl.access.dao.MarketDataMapper">
+	<resultMap id="BaseResult" type="com.ysl.access.to.MarketData">
+		<id column="id" property="id"/>
+		<result column="add_user_count" property="addUserCount"/>
+		<result column="user_cost" property="userCost"/>
+		<result column="all_recharge" property="allRecharge"/>
+		<result column="today_user_pay" property="todayUserpay"/>
+		<result column="today_add_user_count" property="todayAddUserCount"/>
+		<result column="a_user_cost" property="aUserCost"/>
+	</resultMap>
+
+	<!--根据用户权限查询-->
+	<select id="getMarketDataByAccess" resultMap="BaseResult">
+		select
+				${accesscol}
+		from 	market_data
+	</select>
+	<!--获取所有数据-->
+	<select id="getAll" resultMap="BaseResult">
+		select
+				id,
+				add_user_count,
+				user_cost,
+				all_recharge,
+				today_user_pay,
+				today_add_user_count,
+				a_user_cost
+		from 	market_data
+	</select>
+
+</mapper>
